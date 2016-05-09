@@ -14,6 +14,15 @@
 		0692FACD1CE01D350016A4FC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0692FACB1CE01D350016A4FC /* LaunchScreen.storyboard */; };
 		0692FAD81CE01D350016A4FC /* lesson01Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0692FAD71CE01D350016A4FC /* lesson01Tests.swift */; };
 		0692FAE31CE01D350016A4FC /* lesson01UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0692FAE21CE01D350016A4FC /* lesson01UITests.swift */; };
+		06B030E01CE0D15F005885C1 /* PhotoTimeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06B030DE1CE0D15F005885C1 /* PhotoTimeTableViewCell.swift */; };
+		06B030E11CE0D15F005885C1 /* PhotoTimeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 06B030DF1CE0D15F005885C1 /* PhotoTimeTableViewCell.xib */; };
+		06B030E41CE0D41E005885C1 /* PhotoDateTimeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06B030E21CE0D41E005885C1 /* PhotoDateTimeTableViewCell.swift */; };
+		06B030E51CE0D41E005885C1 /* PhotoDateTimeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 06B030E31CE0D41E005885C1 /* PhotoDateTimeTableViewCell.xib */; };
+		06F0FC201CE03BED00B7CAE4 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06F0FC1F1CE03BED00B7CAE4 /* DetailViewController.swift */; };
+		06F0FC2B1CE0A77600B7CAE4 /* DateTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06F0FC291CE0A77600B7CAE4 /* DateTableViewCell.swift */; };
+		06F0FC2C1CE0A77600B7CAE4 /* DateTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 06F0FC2A1CE0A77600B7CAE4 /* DateTableViewCell.xib */; };
+		06F0FC2F1CE0B45C00B7CAE4 /* PhotoDateTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06F0FC2D1CE0B45C00B7CAE4 /* PhotoDateTableViewCell.swift */; };
+		06F0FC301CE0B45C00B7CAE4 /* PhotoDateTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 06F0FC2E1CE0B45C00B7CAE4 /* PhotoDateTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +56,15 @@
 		0692FADE1CE01D350016A4FC /* lesson01UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = lesson01UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0692FAE21CE01D350016A4FC /* lesson01UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = lesson01UITests.swift; sourceTree = "<group>"; };
 		0692FAE41CE01D350016A4FC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		06B030DE1CE0D15F005885C1 /* PhotoTimeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoTimeTableViewCell.swift; sourceTree = "<group>"; };
+		06B030DF1CE0D15F005885C1 /* PhotoTimeTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PhotoTimeTableViewCell.xib; sourceTree = "<group>"; };
+		06B030E21CE0D41E005885C1 /* PhotoDateTimeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoDateTimeTableViewCell.swift; sourceTree = "<group>"; };
+		06B030E31CE0D41E005885C1 /* PhotoDateTimeTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PhotoDateTimeTableViewCell.xib; sourceTree = "<group>"; };
+		06F0FC1F1CE03BED00B7CAE4 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		06F0FC291CE0A77600B7CAE4 /* DateTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateTableViewCell.swift; sourceTree = "<group>"; };
+		06F0FC2A1CE0A77600B7CAE4 /* DateTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DateTableViewCell.xib; sourceTree = "<group>"; };
+		06F0FC2D1CE0B45C00B7CAE4 /* PhotoDateTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoDateTableViewCell.swift; sourceTree = "<group>"; };
+		06F0FC2E1CE0B45C00B7CAE4 /* PhotoDateTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PhotoDateTableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,9 +115,18 @@
 		0692FAC11CE01D350016A4FC /* lesson01 */ = {
 			isa = PBXGroup;
 			children = (
+				06F0FC2D1CE0B45C00B7CAE4 /* PhotoDateTableViewCell.swift */,
+				06F0FC2E1CE0B45C00B7CAE4 /* PhotoDateTableViewCell.xib */,
+				06B030DE1CE0D15F005885C1 /* PhotoTimeTableViewCell.swift */,
+				06B030E21CE0D41E005885C1 /* PhotoDateTimeTableViewCell.swift */,
+				06B030E31CE0D41E005885C1 /* PhotoDateTimeTableViewCell.xib */,
+				06B030DF1CE0D15F005885C1 /* PhotoTimeTableViewCell.xib */,
+				06F0FC291CE0A77600B7CAE4 /* DateTableViewCell.swift */,
+				06F0FC2A1CE0A77600B7CAE4 /* DateTableViewCell.xib */,
 				0692FAC21CE01D350016A4FC /* AppDelegate.swift */,
 				0692FAC41CE01D350016A4FC /* ViewController.swift */,
 				0692FAC61CE01D350016A4FC /* Main.storyboard */,
+				06F0FC1F1CE03BED00B7CAE4 /* DetailViewController.swift */,
 				0692FAC91CE01D350016A4FC /* Assets.xcassets */,
 				0692FACB1CE01D350016A4FC /* LaunchScreen.storyboard */,
 				0692FACE1CE01D350016A4FC /* Info.plist */,
@@ -230,8 +257,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				0692FACD1CE01D350016A4FC /* LaunchScreen.storyboard in Resources */,
+				06F0FC301CE0B45C00B7CAE4 /* PhotoDateTableViewCell.xib in Resources */,
 				0692FACA1CE01D350016A4FC /* Assets.xcassets in Resources */,
+				06B030E11CE0D15F005885C1 /* PhotoTimeTableViewCell.xib in Resources */,
 				0692FAC81CE01D350016A4FC /* Main.storyboard in Resources */,
+				06B030E51CE0D41E005885C1 /* PhotoDateTimeTableViewCell.xib in Resources */,
+				06F0FC2C1CE0A77600B7CAE4 /* DateTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -256,8 +287,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				06F0FC201CE03BED00B7CAE4 /* DetailViewController.swift in Sources */,
+				06B030E01CE0D15F005885C1 /* PhotoTimeTableViewCell.swift in Sources */,
+				06F0FC2F1CE0B45C00B7CAE4 /* PhotoDateTableViewCell.swift in Sources */,
+				06B030E41CE0D41E005885C1 /* PhotoDateTimeTableViewCell.swift in Sources */,
 				0692FAC51CE01D350016A4FC /* ViewController.swift in Sources */,
 				0692FAC31CE01D350016A4FC /* AppDelegate.swift in Sources */,
+				06F0FC2B1CE0A77600B7CAE4 /* DateTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -482,6 +518,7 @@
 				0692FAE91CE01D350016A4FC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		0692FAEA1CE01D350016A4FC /* Build configuration list for PBXNativeTarget "lesson01Tests" */ = {
 			isa = XCConfigurationList;
@@ -490,6 +527,7 @@
 				0692FAEC1CE01D350016A4FC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		0692FAED1CE01D350016A4FC /* Build configuration list for PBXNativeTarget "lesson01UITests" */ = {
 			isa = XCConfigurationList;
@@ -498,6 +536,7 @@
 				0692FAEF1CE01D350016A4FC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
