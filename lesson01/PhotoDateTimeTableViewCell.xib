@@ -11,11 +11,15 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GsS-wD-776">
-                        <rect key="frame" x="0.0" y="2" width="40" height="40"/>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="GsS-wD-776">
+                        <rect key="frame" x="10" y="2" width="40" height="40"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="40" id="N22-oo-Hr8"/>
+                            <constraint firstAttribute="width" constant="40" id="bSM-xZ-NSM"/>
+                        </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="20:30" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Poj-jg-InH">
                         <rect key="frame" x="266" y="11" width="46" height="21"/>
@@ -35,7 +39,9 @@
                     <constraint firstItem="GsS-wD-776" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" constant="10" id="8MV-x3-Bph"/>
                     <constraint firstItem="nNS-fQ-hWx" firstAttribute="centerY" secondItem="GsS-wD-776" secondAttribute="centerY" id="JWd-hi-i07"/>
                     <constraint firstItem="nNS-fQ-hWx" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="KEn-cr-aG1"/>
+                    <constraint firstItem="GsS-wD-776" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="Sl5-Bd-NpM"/>
                     <constraint firstItem="Poj-jg-InH" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="coa-Gq-qLv"/>
+                    <constraint firstItem="GsS-wD-776" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="ySn-yf-Oyq"/>
                     <constraint firstAttribute="trailing" secondItem="Poj-jg-InH" secondAttribute="trailing" constant="10" id="zHf-aN-bj4"/>
                 </constraints>
             </tableViewCellContentView>
