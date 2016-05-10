@@ -13,15 +13,51 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     @IBOutlet weak var addDatesBtn: UIBarButtonItem!
     var dates:[(year_month_day: String, time: String)] = []
     let image:UIImage? = UIImage(named: "image")
+    enum cellType {
+        case dateTableViewCell
+        case photoDateTableViewCell
+        case photoTimeTableViewCell
+        case photoDateTimeTableViewCell
+        
+        var nibName: String {
+            switch self {
+                case .dateTableViewCell:
+                    return "DateTableViewCell"
+                case .photoDateTableViewCell:
+                    return "PhotoDateTableViewCell"
+                case .photoTimeTableViewCell:
+                    return "PhotoTimeTableViewCell"
+                case .photoDateTimeTableViewCell:
+                    return "PhotoDateTimeTableViewCell"
+            }
+        }
+        
+        var identifier: String {
+            switch self {
+            case .dateTableViewCell:
+                return "DateTableViewCell"
+            case .photoDateTableViewCell:
+                return "PhotoDateTableViewCell"
+            case .photoTimeTableViewCell:
+                return "PhotoTimeTableViewCell"
+            case .photoDateTimeTableViewCell:
+                return "PhotoDateTimeTableViewCell"
+            }
+        }
+        
+        func registerTableViewCellNib(tableView: UITableView) {
+            tableView.registerNib(UINib(nibName: self.nibName, bundle: nil), forCellReuseIdentifier: self.identifier)
+        }
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
         
-        registerTableViewCellNib("DateTableViewCell", identifier: "DateTableViewCell")
-        registerTableViewCellNib("PhotoDateTableViewCell", identifier: "PhotoDateTableViewCell")
-        registerTableViewCellNib("PhotoTimeTableViewCell", identifier: "PhotoTimeTableViewCell")
-        registerTableViewCellNib("PhotoDateTimeTableViewCell", identifier: "PhotoDateTimeTableViewCell")
+        cellType.dateTableViewCell.registerTableViewCellNib(tableView)
+        cellType.photoDateTableViewCell.registerTableViewCellNib(tableView)
+        cellType.photoTimeTableViewCell.registerTableViewCellNib(tableView)
+        cellType.photoDateTimeTableViewCell.registerTableViewCellNib(tableView)
     }
     
     @IBAction func buttonTapped(sender: AnyObject) {
@@ -38,8 +74,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         let dateTuple = (year_month_day: dateFormatter.stringFromDate(date), time: dateFormatterForTime.stringFromDate(date))
         dates.append(dateTuple)
         let indexPath = NSIndexPath(forRow: 0, inSection: 0)
-        self.tableView.insertRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
-        self.tableView.reloadData()
+        tableView.insertRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
+        tableView.reloadData()
     }
     
     override func didReceiveMemoryWarning() {
@@ -49,7 +85,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "showDetail" {
-            if let indexPath = self.tableView.indexPathForSelectedRow {
+            if let indexPath = tableView.indexPathForSelectedRow {
                 let date = dates[indexPath.row]
                 (segue.destinationViewController as! DetailViewController)
                     .detailItem = date
@@ -62,29 +98,31 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let year_month_day = dates[indexPath.row].year_month_day
-        let time = dates[indexPath.row].time
-        
         let row = indexPath.row
-        if row % 2 == 0 {
-            let cell = tableView.dequeueReusableCellWithIdentifier("PhotoDateTableViewCell") as! PhotoDateTableViewCell
-            cell.photoDateImage?.image = image
-            cell.photoDateLabel?.text = year_month_day
-            return cell
-        } else if row % 3 == 0 {
-            
-            let cell = tableView.dequeueReusableCellWithIdentifier("PhotoTimeTableViewCell") as! PhotoTimeTableViewCell
-            cell.photoTimeImage?.image = image
-            cell.photoTimeLabel?.text = time
-            return cell
-        } else if row % 6 == 0 {
-            let cell = tableView.dequeueReusableCellWithIdentifier("PhotoDateTimeTableViewCell") as! PhotoDateTimeTableViewCell
+        let year_month_day = dates[row].year_month_day
+        let time = dates[row].time
+        
+        let condition:Bool = (row % 2 == 0)
+        let condition2:Bool = (row % 3 == 0)
+        
+        if condition && condition2 {
+            let cell = tableView.dequeueReusableCellWithIdentifier(cellType.photoDateTimeTableViewCell.identifier) as! PhotoDateTimeTableViewCell
             cell.photoDateTimeImage?.image = image
             cell.PhotoDateTimeDateLabel?.text = year_month_day
             cell.PhotoDateTimelLabel?.text = time
             return cell
+        } else if condition {
+            let cell = tableView.dequeueReusableCellWithIdentifier(cellType.photoDateTableViewCell.identifier) as! PhotoDateTableViewCell
+            cell.photoDateImage?.image = image
+            cell.photoDateLabel?.text = year_month_day
+            return cell
+        } else if condition2 {
+            let cell = tableView.dequeueReusableCellWithIdentifier(cellType.photoTimeTableViewCell.identifier) as! PhotoTimeTableViewCell
+            cell.photoTimeImage?.image = image
+            cell.photoTimeLabel?.text = time
+            return cell
         } else {
-            let cell = tableView.dequeueReusableCellWithIdentifier("DateTableViewCell") as! DateTableViewCell
+            let cell = tableView.dequeueReusableCellWithIdentifier(cellType.dateTableViewCell.identifier) as! DateTableViewCell
             cell.dayLabel?.text = year_month_day
             cell.timeLabel?.text = time
             return cell
@@ -105,19 +143,13 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     
     func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
-        let deleteBtn = UITableViewRowAction(style: .Default, title: "Delete") {
-            (action, indexPath) -> Void in
+        let deleteBtn = UITableViewRowAction(style: .Destructive, title: "Delete") {
+            [weak self] (action, indexPath) -> Void in
             print("\(indexPath) deleted!")
-            self.dates.removeAtIndex(indexPath.row)
+            self?.dates.removeAtIndex(indexPath.row)
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
         }
-        deleteBtn.backgroundColor = UIColor.redColor()
         return [deleteBtn]
     }
-    
-    private func registerTableViewCellNib(nibName: String, identifier: String) {
-        tableView.registerNib(UINib(nibName: nibName, bundle: nil), forCellReuseIdentifier: identifier)
-    }
-
 }
 
