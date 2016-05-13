@@ -1,0 +1,6 @@
+#Carthage
+Carthage/Checkouts
+Carthage/Build
+Carthage/Cartfile.resolved
+
+.DS_Store
