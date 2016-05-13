@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		06485F801CE5DC5C00B687A0 /* CellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06485F7F1CE5DC5C00B687A0 /* CellViewModel.swift */; };
 		0692FAC31CE01D350016A4FC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0692FAC21CE01D350016A4FC /* AppDelegate.swift */; };
 		0692FAC51CE01D350016A4FC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0692FAC41CE01D350016A4FC /* ViewController.swift */; };
 		0692FAC81CE01D350016A4FC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0692FAC61CE01D350016A4FC /* Main.storyboard */; };
@@ -43,6 +44,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		06485F7F1CE5DC5C00B687A0 /* CellViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CellViewModel.swift; path = ../CellViewModel.swift; sourceTree = "<group>"; };
 		0692FABF1CE01D340016A4FC /* lesson01.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = lesson01.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0692FAC21CE01D350016A4FC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0692FAC41CE01D350016A4FC /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -115,6 +117,7 @@
 		0692FAC11CE01D350016A4FC /* lesson01 */ = {
 			isa = PBXGroup;
 			children = (
+				06485F7F1CE5DC5C00B687A0 /* CellViewModel.swift */,
 				06F0FC2D1CE0B45C00B7CAE4 /* PhotoDateTableViewCell.swift */,
 				06F0FC2E1CE0B45C00B7CAE4 /* PhotoDateTableViewCell.xib */,
 				06B030DE1CE0D15F005885C1 /* PhotoTimeTableViewCell.swift */,
@@ -289,6 +292,7 @@
 			files = (
 				06F0FC201CE03BED00B7CAE4 /* DetailViewController.swift in Sources */,
 				06B030E01CE0D15F005885C1 /* PhotoTimeTableViewCell.swift in Sources */,
+				06485F801CE5DC5C00B687A0 /* CellViewModel.swift in Sources */,
 				06F0FC2F1CE0B45C00B7CAE4 /* PhotoDateTableViewCell.swift in Sources */,
 				06B030E41CE0D41E005885C1 /* PhotoDateTimeTableViewCell.swift in Sources */,
 				0692FAC51CE01D350016A4FC /* ViewController.swift in Sources */,

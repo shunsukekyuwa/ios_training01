@@ -23,4 +23,9 @@ class PhotoDateTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+    func set(image: UIImage, yearMonthDay: String) {
+        photoDateImage?.image = image
+        photoDateLabel?.text = yearMonthDay
+    }
+    
 }

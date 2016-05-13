@@ -24,4 +24,10 @@ class PhotoTimeTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+    func set(image: UIImage, time: String) {
+        photoTimeImage?.image = image
+        photoTimeLabel?.text = time
+    }
+    
+    
 }

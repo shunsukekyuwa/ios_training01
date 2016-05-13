@@ -11,8 +11,10 @@ import UIKit
 class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var addDatesBtn: UIBarButtonItem!
-    var dates:[(year_month_day: String, time: String)] = []
-    let image:UIImage? = UIImage(named: "image")
+    let image:UIImage? = UIImage(named: "image")!
+    
+    let cellViewModel = CellViewModel()
+    
     enum cellType {
         case dateTableViewCell
         case photoDateTableViewCell
@@ -61,20 +63,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     
     @IBAction func buttonTapped(sender: AnyObject) {
-        let date = NSDate()
-        
-        let dateFormatter = NSDateFormatter()
-        dateFormatter.timeStyle = .NoStyle
-        dateFormatter.dateStyle = .ShortStyle
-        
-        let dateFormatterForTime = NSDateFormatter()
-        dateFormatterForTime.timeStyle = .ShortStyle
-        dateFormatterForTime.dateStyle = .NoStyle
-        
-        let dateTuple = (year_month_day: dateFormatter.stringFromDate(date), time: dateFormatterForTime.stringFromDate(date))
-        dates.append(dateTuple)
-        let indexPath = NSIndexPath(forRow: 0, inSection: 0)
-        tableView.insertRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
+        cellViewModel.addCell()
+        tableView.insertRowsAtIndexPaths([NSIndexPath(forRow: 0, inSection: 0)], withRowAnimation: .Automatic)
         tableView.reloadData()
     }
     
@@ -86,45 +76,40 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "showDetail" {
             if let indexPath = tableView.indexPathForSelectedRow {
-                let date = dates[indexPath.row]
                 (segue.destinationViewController as! DetailViewController)
-                    .detailItem = date
+                    .detailItem = cellViewModel.targetDate(indexPath)
             }
         }
     }
 
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return dates.count
+        return cellViewModel.cellCount()
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let row = indexPath.row
-        let year_month_day = dates[row].year_month_day
-        let time = dates[row].time
         
-        let condition:Bool = (row % 2 == 0)
-        let condition2:Bool = (row % 3 == 0)
+        let targetDate = cellViewModel.targetDate(indexPath)
+        let year_month_day = targetDate.year_month_day
+        let time = targetDate.time
         
-        if condition && condition2 {
+        let rowCondition = ((indexPath.row % 2 == 0), (indexPath.row % 3 == 0))
+        
+        switch rowCondition {
+        case (let condition, let condition2) where condition && condition2:
             let cell = tableView.dequeueReusableCellWithIdentifier(cellType.photoDateTimeTableViewCell.identifier) as! PhotoDateTimeTableViewCell
-            cell.photoDateTimeImage?.image = image
-            cell.PhotoDateTimeDateLabel?.text = year_month_day
-            cell.PhotoDateTimelLabel?.text = time
+            cell.set(image!, yearMonthDay: year_month_day, time: time)
             return cell
-        } else if condition {
+        case (let condition, _) where condition:
             let cell = tableView.dequeueReusableCellWithIdentifier(cellType.photoDateTableViewCell.identifier) as! PhotoDateTableViewCell
-            cell.photoDateImage?.image = image
-            cell.photoDateLabel?.text = year_month_day
+            cell.set(image!, yearMonthDay: year_month_day)
             return cell
-        } else if condition2 {
+        case (_, let condition2) where condition2:
             let cell = tableView.dequeueReusableCellWithIdentifier(cellType.photoTimeTableViewCell.identifier) as! PhotoTimeTableViewCell
-            cell.photoTimeImage?.image = image
-            cell.photoTimeLabel?.text = time
+            cell.set(image!, time: time)
             return cell
-        } else {
+        default:
             let cell = tableView.dequeueReusableCellWithIdentifier(cellType.dateTableViewCell.identifier) as! DateTableViewCell
-            cell.dayLabel?.text = year_month_day
-            cell.timeLabel?.text = time
+            cell.set(year_month_day, time: time)
             return cell
         }
     }
@@ -146,10 +131,9 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         let deleteBtn = UITableViewRowAction(style: .Destructive, title: "Delete") {
             [weak self] (action, indexPath) -> Void in
             print("\(indexPath) deleted!")
-            self?.dates.removeAtIndex(indexPath.row)
+            self?.cellViewModel.deleteCell(indexPath)
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
         }
         return [deleteBtn]
     }
 }
-
